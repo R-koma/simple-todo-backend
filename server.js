@@ -39,6 +39,12 @@ app.put("/todos/:id/complete", async (req, res) => {
   res.json(todo);
 });
 
+app.put("/reviews/:id/complete", async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+  await todo.save();
+  res.json(todo);
+});
+
 app.delete("/todos/:id", async (req, res) => {
   await Todo.findByIdAndRemove(req.params.id);
   res.json({ message: "Deleted" });
