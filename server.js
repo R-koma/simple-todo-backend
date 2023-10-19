@@ -44,6 +44,11 @@ app.delete("/todos/:id", async (req, res) => {
   res.json({ message: "Deleted" });
 });
 
+app.delete("/reviews/:id", async (req, res) => {
+  await Todo.findByIdAndRemove(req.params.id);
+  res.json({ message: "Deleted" });
+});
+
 app.listen(3001, () => {
   console.log("Server is running on port 3001");
 });
